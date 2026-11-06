@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compassion International | Releasing Children from Poverty in Jesus' Name</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        compassion: {
+                            blue: '#0054A6',
+                            darkBlue: '#003366',
+                            lightBlue: '#E6F0FA',
+                            gold: '#F5A623',
+                            accent: '#00A8B5'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        /* Custom Smooth Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.05);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #0054A6;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 font-sans transition-colors duration-200 flex flex-col min-h-screen">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-compassion-darkBlue text-white text-xs py-2 px-4 text-center font-medium flex items-center justify-center space-x-2">
+        <span class="bg-compassion-gold text-slate-900 text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full">Top Rated</span>
+        <span>Recognized by Charity Navigator & ECFA for financial integrity and transparency.</span>
+    </div>
+
+    <!-- Main Navigation Bar -->
+    <header class="sticky top-0 z-40 bg-white/90 dark:bg-slate-900/90 backdrop-blur border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center space-x-3">
+                <div class="w-10 h-10 bg-compassion-blue text-white rounded-xl flex items-center justify-center shadow-md font-bold text-xl">
+                    <i data-lucide="heart-handshake" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <span class="font-extrabold text-xl tracking-tight text-compassion-darkBlue dark:text-white">COMPASSION</span>
+                    <span class="text-xs text-compassion-blue dark:text-compassion-accent font-semibold block -mt-1 tracking-widest uppercase">International</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden lg:flex items-center space-x-8 text-sm font-semibold">
+                <a href="#about" class="hover:text-compassion-blue dark:hover:text-compassion-accent transition-colors">Our Mission</a>
+                <a href="#pillars" class="hover:text-compassion-blue dark:hover:text-compassion-accent transition-colors">Core Pillars</a>
+                <a href="#sponsor" class="hover:text-compassion-blue dark:hover:text-compassion-accent transition-colors">Sponsor a Child</a>
+                <a href="#church-model" class="hover:text-compassion-blue dark:hover:text-compassion-accent transition-colors">Church Partner Model</a>
+                <a href="#calculator" class="hover:text-compassion-blue dark:hover:text-compassion-accent transition-colors">Impact Calculator</a>
+                <a href="#quiz" class="hover:text-compassion-blue dark:hover:text-compassion-accent transition-colors">Advocacy Quiz</a>
+            </nav>
+
+            <!-- Header Actions -->
+            <div class="flex items-center space-x-3">
+                <button onclick="toggleTheme()" class="p-2 rounded-xl text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" title="Toggle Theme">
+                    <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+                    <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
+                </button>
+                <a href="#sponsor" class="hidden sm:inline-flex items-center space-x-2 bg-compassion-blue hover:bg-compassion-darkBlue text-white px-4 py-2 rounded-xl text-sm font-bold shadow-md transition-all transform hover:-translate-y-0.5">
+                    <i data-lucide="heart" class="w-4 h-4 text-compassion-gold fill-current"></i>
+                    <span>Sponsor Now</span>
+                </a>
+                <button onclick="toggleMobileNav()" class="lg:hidden p-2 rounded-xl text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-800">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Nav Menu -->
+        <div id="mobile-nav" class="hidden lg:hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-3 space-y-2">
+            <a href="#about" onclick="toggleMobileNav()" class="block px-3 py-2 rounded-lg font-medium hover:bg-slate-100 dark:hover:bg-slate-800">Our Mission</a>
+            <a href="#pillars" onclick="toggleMobileNav()" class="block px-3 py-2 rounded-lg font-medium hover:bg-slate-100 dark:hover:bg-slate-800">Core Pillars</a>
+            <a href="#sponsor" onclick="toggleMobileNav()" class="block px-3 py-2 rounded-lg font-medium hover:bg-slate-100 dark:hover:bg-slate-800">Sponsor a Child</a>
+            <a href="#church-model" onclick="toggleMobileNav()" class="block px-3 py-2 rounded-lg font-medium hover:bg-slate-100 dark:hover:bg-slate-800">Church Partner Model</a>
+            <a href="#calculator" onclick="toggleMobileNav()" class="block px-3 py-2 rounded-lg font-medium hover:bg-slate-100 dark:hover:bg-slate-800">Impact Calculator</a>
+            <a href="#quiz" onclick="toggleMobileNav()" class="block px-3 py-2 rounded-lg font-medium hover:bg-slate-100 dark:hover:bg-slate-800">Advocacy Quiz</a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION & MISSION STATEMENT -->
+    <section id="about" class="relative bg-gradient-to-br from-slate-900 via-compassion-darkBlue to-slate-900 text-white overflow-hidden py-16 lg:py-24">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Hero Content -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <span class="inline-flex items-center space-x-2 bg-compassion-blue/40 border border-compassion-accent/30 text-compassion-accent px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider">
+                        <i data-lucide="globe" class="w-4 h-4"></i>
+                        <span>Christ-Centered • Child-Focused • Church-Based</span>
+                    </span>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+                        Releasing Children From <span class="bg-gradient-to-r from-compassion-gold via-amber-300 to-compassion-gold bg-clip-text text-transparent">Poverty</span> In Jesus' Name
+                    </h1>
+
+                    <p class="text-slate-300 text-base sm:text-lg max-w-2xl leading-relaxed">
+                        Compassion International partners with local churches worldwide to deliver holistically tailored child development programs—empowering children with education, healthcare, nutrition, and hope for a bright future.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                        <a href="#sponsor" class="w-full sm:w-auto px-6 py-3.5 bg-compassion-gold hover:bg-amber-500 text-slate-950 font-extrabold rounded-xl shadow-lg transition-all flex items-center justify-center space-x-2">
+                            <span>Find a Child to Sponsor</span>
+                            <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#church-model" class="w-full sm:w-auto px-6 py-3.5 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold rounded-xl backdrop-blur transition-all text-center">
+                            How Our Model Works
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero Graphic Card -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-3xl shadow-2xl max-w-md w-full space-y-6">
+                        <div class="flex items-center space-x-4 border-b border-white/10 pb-4">
+                            <div class="w-12 h-12 rounded-full bg-compassion-gold/20 flex items-center justify-center text-compassion-gold font-bold text-xl">
+                                <i data-lucide="shield-check" class="w-7 h-7"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg text-white">Highest Accountability</h3>
+                                <p class="text-xs text-slate-300">80%+ of funds go directly to child programs</p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-3">
+                            <div class="flex justify-between text-xs font-semibold text-slate-300">
+                                <span>Program Execution</span>
+                                <span class="text-compassion-gold">83.4%</span>
+                            </div>
+                            <div class="w-full bg-white/20 h-2.5 rounded-full overflow-hidden">
+                                <div class="bg-compassion-gold h-full rounded-full" style="width: 83.4%"></div>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-3 pt-2">
+                                <div class="bg-white/5 p-3 rounded-xl border border-white/10 text-center">
+                                    <span class="text-xs text-slate-400 block">Charity Navigator</span>
+                                    <span class="text-sm font-bold text-amber-400">★★★★ 4-Star</span>
+                                </div>
+                                <div class="bg-white/5 p-3 rounded-xl border border-white/10 text-center">
+                                    <span class="text-xs text-slate-400 block">ECFA Member</span>
+                                    <span class="text-sm font-bold text-emerald-400">Verified Safe</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KEY QUICK IMPACT STATS -->
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 pt-12 border-t border-white/10">
+                <div class="bg-white/5 backdrop-blur p-5 rounded-2xl border border-white/10 text-center">
+                    <div class="text-3xl sm:text-4xl font-extrabold text-compassion-gold">2.3M+</div>
+                    <div class="text-xs sm:text-sm text-slate-300 font-medium mt-1">Children Sponsored</div>
+                </div>
+                <div class="bg-white/5 backdrop-blur p-5 rounded-2xl border border-white/10 text-center">
+                    <div class="text-3xl sm:text-4xl font-extrabold text-compassion-accent">8,500+</div>
+                    <div class="text-xs sm:text-sm text-slate-300 font-medium mt-1">Local Church Partners</div>
+                </div>
+                <div class="bg-white/5 backdrop-blur p-5 rounded-2xl border border-white/10 text-center">
+                    <div class="text-3xl sm:text-4xl font-extrabold text-sky-400">29</div>
+                    <div class="text-xs sm:text-sm text-slate-300 font-medium mt-1">Developing Nations</div>
+                </div>
+                <div class="bg-white/5 backdrop-blur p-5 rounded-2xl border border-white/10 text-center">
+                    <div class="text-3xl sm:text-4xl font-extrabold text-emerald-400">70+ Yrs</div>
+                    <div class="text-xs sm:text-sm text-slate-300 font-medium mt-1">Faithful Ministry</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CORE PILLARS OF WORK -->
+    <section id="pillars" class="py-16 sm:py-24 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto space-y-4">
+                <span class="text-xs font-extrabold text-compassion-blue dark:text-compassion-accent tracking-widest uppercase bg-compassion-lightBlue dark:bg-slate-800 px-3 py-1 rounded-full">Holistic Care</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">Our 4 Core Pillars of Work</h2>
+                <p class="text-slate-600 dark:text-slate-400 text-sm sm:text-base">
+                    Poverty is complex and impacts every area of a child's life. Our holistic response addresses physical, economic, educational, and spiritual needs.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
+                <!-- Pillar 1 -->
+                <div class="bg-slate-50 dark:bg-slate-800/60 p-6 rounded-2xl border border-slate-200 dark:border-slate-700/60 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                    <div class="space-y-4">
+                        <div class="w-14 h-14 bg-compassion-blue text-white rounded-2xl flex items-center justify-center shadow-md group-hover:scale-110 transition-transform">
+                            <i data-lucide="user-check" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">1. Child Sponsorship</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                            One-on-one personal connections that provide continuous education, nutritional support, health checks, and spiritual mentorship.
+                        </p>
+                    </div>
+                    <ul class="mt-6 pt-4 border-t border-slate-200 dark:border-slate-700 text-xs text-slate-500 dark:text-slate-400 space-y-2">
+                        <li class="flex items-center space-x-2"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-500"></i><span>Personal Sponsor Letters</span></li>
+                        <li class="flex items-center space-x-2"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-500"></i><span>Individualized Mentorship</span></li>
+                    </ul>
+                </div>
+
+                <!-- Pillar 2 -->
+                <div class="bg-slate-50 dark:bg-slate-800/60 p-6 rounded-2xl border border-slate-200 dark:border-slate-700/60 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                    <div class="space-y-4">
+                        <div class="w-14 h-14 bg-emerald-600 text-white rounded-2xl flex items-center justify-center shadow-md group-hover:scale-110 transition-transform">
+                            <i data-lucide="activity" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">2. Medical & Health Care</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                            Preventative healthcare, immunizations, emergency surgeries, clean water installations, and maternal-child health initiatives.
+                        </p>
+                    </div>
+                    <ul class="mt-6 pt-4 border-t border-slate-200 dark:border-slate-700 text-xs text-slate-500 dark:text-slate-400 space-y-2">
+                        <li class="flex items-center space-x-2"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-500"></i><span>Annual Health Screening</span></li>
+                        <li class="flex items-center space-x-2"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-500"></i><span>Clean Water & Hygiene</span></li>
+                    </ul>
+                </div>
+
+                <!-- Pillar 3 -->
+                <div class="bg-slate-50 dark:bg-slate-800/60 p-6 rounded-2xl border border-slate-200 dark:border-slate-700/60 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                    <div class="space-y-4">
+                        <div class="w-14 h-14 bg-amber-500 text-white rounded-2xl flex items-center justify-center shadow-md group-hover:scale-110 transition-transform">
+                            <i data-lucide="book-open" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">3. Education & Skills</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                            Tuition support, uniforms, textbooks, vocational trade workshops, and university scholarship opportunities.
+                        </p>
+                    </div>
+                    <ul class="mt-6 pt-4 border-t border-slate-200 dark:border-slate-700 text-xs text-slate-500 dark:text-slate-400 space-y-2">
+                        <li class="flex items-center space-x-2"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-500"></i><span>Schooling Assistance</span></li>
+                        <li class="flex items-center space-x-2"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-500"></i><span>Job Skills & Literacy</span></li>
+                    </ul>
+                </div>
+
+                <!-- Pillar 4 -->
+                <div class="bg-slate-50 dark:bg-slate-800/60 p-6 rounded-2xl border border-slate-200 dark:border-slate-700/60 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                    <div class="space-y-4">
+                        <div class="w-14 h-14 bg-rose-600 text-white rounded-2xl flex items-center justify-center shadow-md group-hover:scale-110 transition-transform">
+                            <i data-lucide="shield-alert" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">4. Relief & Security</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                            Immediate emergency intervention during natural disasters, food crises, droughts, and displacement emergencies.
+                        </p>
+                    </div>
+                    <ul class="mt-6 pt-4 border-t border-slate-200 dark:border-slate-700 text-xs text-slate-500 dark:text-slate-400 space-y-2">
+                        <li class="flex items-center space-x-2"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-500"></i><span>Emergency Food Packs</span></li>
+                        <li class="flex items-center space-x-2"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-500"></i><span>Disaster Rebuilding</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE CHILD SPONSORSHIP SHOWCASE -->
+    <section id="sponsor" class="py-16 sm:py-24 bg-slate-100 dark:bg-slate-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+                <div>
+                    <span class="text-xs font-extrabold text-compassion-blue dark:text-compassion-accent tracking-widest uppercase">Make a Personal Impact</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-1">Children Waiting for Sponsorship</h2>
+                </div>
+
+                <!-- Filters -->
+                <div class="flex flex-wrap gap-2">
+                    <select id="filter-region" onchange="filterChildren()" class="px-4 py-2 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-compassion-blue">
+                        <option value="all">All Regions</option>
+                        <option value="East Africa">East Africa</option>
+                        <option value="Latin America">Latin America</option>
+                        <option value="Asia">Asia</option>
+                    </select>
+
+                    <select id="filter-age" onchange="filterChildren()" class="px-4 py-2 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-compassion-blue">
+                        <option value="all">All Ages</option>
+                        <option value="younger">Under 8 years</option>
+                        <option value="older">8+ years</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Children Grid -->
+            <div id="children-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Rendered dynamically via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- LOCAL CHURCH PARTNER MODEL SECTION -->
+    <section id="church-model" class="py-16 sm:py-24 bg-white dark:bg-slate-900 border-t border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto space-y-4">
+                <span class="text-xs font-extrabold text-compassion-blue dark:text-compassion-accent tracking-widest uppercase bg-compassion-lightBlue dark:bg-slate-800 px-3 py-1 rounded-full">Our Strategy</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">Why We Partner With Local Churches</h2>
+                <p class="text-slate-600 dark:text-slate-400 text-sm sm:text-base">
+                    Local churches are permanently rooted in their communities. They know the families, understand the culture, and remain long after outside relief organizations leave.
+                </p>
+            </div>
+
+            <!-- Interactive Flow Steps -->
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-4 gap-6 relative">
+                <!-- Step 1 -->
+                <div class="bg-slate-50 dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 text-center relative space-y-3">
+                    <div class="w-10 h-10 bg-compassion-blue text-white font-extrabold rounded-full flex items-center justify-center mx-auto text-sm shadow">1</div>
+                    <h3 class="font-bold text-lg text-slate-900 dark:text-white">Community Identification</h3>
+                    <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                        Local indigenous churches identify the most vulnerable children in poverty-stricken neighborhoods.
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="bg-slate-50 dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 text-center relative space-y-3">
+                    <div class="w-10 h-10 bg-compassion-blue text-white font-extrabold rounded-full flex items-center justify-center mx-auto text-sm shadow">2</div>
+                    <h3 class="font-bold text-lg text-slate-900 dark:text-white">Center Registration</h3>
+                    <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                        Children are registered into the local Church Child Development Center regardless of religious background.
+                    </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="bg-slate-50 dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 text-center relative space-y-3">
+                    <div class="w-10 h-10 bg-compassion-blue text-white font-extrabold rounded-full flex items-center justify-center mx-auto text-sm shadow">3</div>
+                    <h3 class="font-bold text-lg text-slate-900 dark:text-white">Holistic Sponsorship</h3>
+                    <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                        Sponsors provide financial support while church staff administer nutrition, medical care, and tutoring.
+                    </p>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="bg-slate-50 dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 text-center relative space-y-3">
+                    <div class="w-10 h-10 bg-emerald-600 text-white font-extrabold rounded-full flex items-center justify-center mx-auto text-sm shadow">4</div>
+                    <h3 class="font-bold text-lg text-slate-900 dark:text-white">Graduation & Leadership</h3>
+                    <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                        Young adults graduate as educated, self-sufficient, responsible leaders serving their communities.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- IMPACT CALCULATOR / SPONSORSHIP SIMULATOR -->
+    <section id="calculator" class="py-16 sm:py-24 bg-slate-950 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-6 space-y-6">
+                    <span class="text-xs font-extrabold text-compassion-gold tracking-widest uppercase bg-white/10 px-3 py-1 rounded-full">Interactive Simulator</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold">See What Your Monthly Support Provides</h2>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                        Adjust the slider to simulate monthly contributions and discover how your ongoing support transforms life for sponsored children.
+                    </p>
+
+                    <!-- Slider Control -->
+                    <div class="bg-white/5 border border-white/10 p-6 rounded-2xl space-y-4">
+                        <div class="flex justify-between items-center">
+                            <label for="monthly-slider" class="text-sm font-semibold text-slate-300">Monthly Contribution:</label>
+                            <span id="slider-amount-display" class="text-3xl font-extrabold text-compassion-gold">$43 / mo</span>
+                        </div>
+                        <input type="range" id="monthly-slider" min="20" max="150" value="43" step="1" oninput="updateCalculator(this.value)" class="w-full h-3 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-compassion-gold">
+                        <div class="flex justify-between text-xs text-slate-400">
+                            <span>$20</span>
+                            <span>$43 (Standard)</span>
+                            <span>$100</span>
+                            <span>$150</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Simulation Output -->
+                <div class="lg:col-span-6">
+                    <div class="bg-white/10 backdrop-blur-md border border-white/20 p-6 sm:p-8 rounded-3xl space-y-6">
+                        <h3 class="text-xl font-bold border-b border-white/10 pb-4 flex items-center justify-between">
+                            <span>Annual Projected Impact</span>
+                            <i data-lucide="sparkles" class="w-5 h-5 text-compassion-gold"></i>
+                        </h3>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div class="bg-white/5 p-4 rounded-xl border border-white/10 flex items-start space-x-3">
+                                <i data-lucide="utensils" class="w-6 h-6 text-amber-400 shrink-0 mt-1"></i>
+                                <div>
+                                    <span id="calc-meals" class="text-2xl font-bold text-white block">516</span>
+                                    <span class="text-xs text-slate-300">Nutritious Meals Served</span>
+                                </div>
+                            </div>
+
+                            <div class="bg-white/5 p-4 rounded-xl border border-white/10 flex items-start space-x-3">
+                                <i data-lucide="stethoscope" class="w-6 h-6 text-emerald-400 shrink-0 mt-1"></i>
+                                <div>
+                                    <span id="calc-checkups" class="text-2xl font-bold text-white block">12</span>
+                                    <span class="text-xs text-slate-300">Medical & Dental Exams</span>
+                                </div>
+                            </div>
+
+                            <div class="bg-white/5 p-4 rounded-xl border border-white/10 flex items-start space-x-3">
+                                <i data-lucide="book-open" class="w-6 h-6 text-sky-400 shrink-0 mt-1"></i>
+                                <div>
+                                    <span id="calc-books" class="text-2xl font-bold text-white block">Full Year</span>
+                                    <span class="text-xs text-slate-300">Schooling Supplies & Tutoring</span>
+                                </div>
+                            </div>
+
+                            <div class="bg-white/5 p-4 rounded-xl border border-white/10 flex items-start space-x-3">
+                                <i data-lucide="droplet" class="w-6 h-6 text-indigo-400 shrink-0 mt-1"></i>
+                                <div>
+                                    <span id="calc-water" class="text-2xl font-bold text-white block">Clean Water</span>
+                                    <span class="text-xs text-slate-300">Safe Drinking Access</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a href="#sponsor" class="w-full py-3.5 bg-compassion-gold hover:bg-amber-500 text-slate-950 font-extrabold rounded-xl shadow-lg transition-all text-center block">
+                            Sponsor at This Level Today
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE ADVOCACY & POVERTY QUIZ -->
+    <section id="quiz" class="py-16 sm:py-24 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+            <div class="text-center space-y-3">
+                <span class="text-xs font-extrabold text-compassion-blue dark:text-compassion-accent tracking-widest uppercase bg-compassion-lightBlue dark:bg-slate-800 px-3 py-1 rounded-full">Test Your Knowledge</span>
+                <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white">Global Poverty & Advocacy Quiz</h2>
+                <p class="text-slate-600 dark:text-slate-400 text-sm">Learn key facts about child development, global poverty alleviation, and holistic care.</p>
+            </div>
+
+            <div id="quiz-container" class="bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 p-6 sm:p-8 rounded-3xl shadow-sm">
+                <!-- Rendered dynamically via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="mt-auto bg-slate-900 text-slate-400 text-xs border-t border-slate-800 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="space-y-3">
+                    <div class="flex items-center space-x-2 text-white font-bold text-base">
+                        <i data-lucide="heart-handshake" class="w-5 h-5 text-compassion-gold"></i>
+                        <span>COMPASSION INTERNATIONAL</span>
+                    </div>
+                    <p class="leading-relaxed">
+                        Releasing children from poverty in Jesus' name through holistic child development programs.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-semibold text-sm mb-3">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#about" class="hover:text-white transition-colors">Mission & Values</a></li>
+                        <li><a href="#sponsor" class="hover:text-white transition-colors">Sponsor a Child</a></li>
+                        <li><a href="#church-model" class="hover:text-white transition-colors">Church Partner Model</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-semibold text-sm mb-3">Financial Integrity</h4>
+                    <ul class="space-y-2">
+                        <li><span>Charity Navigator 4-Star Rating</span></li>
+                        <li><span>ECFA Certified Financial Integrity</span></li>
+                        <li><span>Better Business Bureau Accredited</span></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-semibold text-sm mb-3">Contact & Global Headquarters</h4>
+                    <p class="leading-relaxed">
+                        12290 Voyage Parkway<br>
+                        Colorado Springs, CO 80921<br>
+                        Phone: (800) 336-7676
+                    </p>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-slate-800 text-center flex flex-col sm:flex-row justify-between items-center gap-4">
+                <p>© 2026 Compassion International. All Rights Reserved.</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Use</a>
+                    <a href="#" class="hover:text-white transition-colors">Financial Accountability</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- CHILD DETAIL MODAL -->
+    <div id="child-modal" class="fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 max-w-lg w-full rounded-3xl shadow-2xl p-6 relative space-y-6 max-h-[90vh] overflow-y-auto">
+            <button onclick="closeChildModal()" class="absolute top-4 right-4 p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+
+            <div id="modal-content">
+                <!-- Injected via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT APP LOGIC -->
+    <script>
+        // Data: Sample Children for Sponsorship
+        const childrenData = [
+            {
+                id: 1,
+                name: "Mateo",
+                age: 6,
+                country: "Guatemala",
+                region: "Latin America",
+                gender: "Boy",
+                interests: "Drawing, Soccer",
+                daysWaiting: 142,
+                image: "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=400&q=80",
+                story: "Mateo lives with his grandmother in rural Guatemala. His favorite subject is art and he dreams of becoming a teacher."
+            },
+            {
+                id: 2,
+                name: "Amina",
+                age: 9,
+                country: "Kenya",
+                region: "East Africa",
+                gender: "Girl",
+                interests: "Reading, Singing",
+                daysWaiting: 98,
+                image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=400&q=80",
+                story: "Amina loves attending her local church child development center. She enjoys math and helping care for younger siblings."
+            },
+            {
+                id: 3,
+                name: "Rohan",
+                age: 5,
+                country: "Bangladesh",
+                region: "Asia",
+                gender: "Boy",
+                interests: "Running, Building blocks",
+                daysWaiting: 210,
+                image: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=400&q=80",
+                story: "Rohan's father works as a day laborer. Sponsorship ensures Rohan receives daily nutritious meals and early education."
+            },
+            {
+                id: 4,
+                name: "Kecia",
+                age: 11,
+                country: "Uganda",
+                region: "East Africa",
+                gender: "Girl",
+                interests: "Science, Volleyball",
+                daysWaiting: 45,
+                image: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=400&q=80",
+                story: "Kecia aspires to be a nurse to care for families in her community. She excels in her school science classes."
+            }
+        ];
+
+        // Data: Quiz Questions
+        const quizQuestions = [
+            {
+                question: "What is Compassion International's unique key channel for program delivery?",
+                options: [
+                    "Direct government contracts",
+                    "Local indigenous Christian churches",
+                    "International corporate offices",
+                    "Mobile relief trucks only"
+                ],
+                correct: 1,
+                explanation: "Compassion partners exclusively with local churches because they are permanent, trusted hubs in the community."
+            },
+            {
+                question: "What percentage of Compassion's funds go directly to child programs?",
+                options: [
+                    "Over 80%",
+                    "Around 50%",
+                    "Approximately 35%",
+                    "60%"
+                ],
+                correct: 0,
+                explanation: "More than 80% of total expenditure directly supports child and youth development programs."
+            },
+            {
+                question: "Which of the following is NOT a core pillar of Compassion's holistic care?",
+                options: [
+                    "Education & Skills Training",
+                    "Medical & Health Care",
+                    "Commercial Micro-Lending",
+                    "Disaster Relief & Food Security"
+                ],
+                correct: 2,
+                explanation: "Compassion focuses on child development, health, education, and emergency relief rather than commercial micro-lending."
+            }
+        ];
+
+        let currentQuizIndex = 0;
+        let quizScore = 0;
+
+        // Initialize Application
+        window.addEventListener('DOMContentLoaded', () => {
+            renderChildren(childrenData);
+            renderQuizQuestion();
+            lucide.createIcons();
+        });
+
+        // Theme Toggle
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+        }
+
+        // Mobile Nav Toggle
+        function toggleMobileNav() {
+            const nav = document.getElementById('mobile-nav');
+            nav.classList.toggle('hidden');
+        }
+
+        // Render Children Grid
+        function renderChildren(items) {
+            const container = document.getElementById('children-grid');
+            container.innerHTML = '';
+
+            items.forEach(child => {
+                const card = document.createElement('div');
+                card.className = "bg-white dark:bg-slate-800 rounded-3xl border border-slate-200 dark:border-slate-700 overflow-hidden shadow-sm hover:shadow-xl transition-all flex flex-col justify-between";
+                card.innerHTML = `
+                    <div>
+                        <div class="relative h-48 overflow-hidden bg-slate-200">
+                            <img src="${child.image}" alt="${child.name}" class="w-full h-full object-cover">
+                            <span class="absolute top-3 left-3 bg-slate-900/80 text-white text-[10px] font-bold px-2.5 py-1 rounded-full backdrop-blur">
+                                Waiting ${child.daysWaiting} days
+                            </span>
+                        </div>
+                        <div class="p-5 space-y-2">
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-xl font-bold text-slate-900 dark:text-white">${child.name}, ${child.age}</h3>
+                                <span class="text-xs font-semibold px-2 py-0.5 rounded bg-compassion-lightBlue dark:bg-slate-700 text-compassion-blue dark:text-compassion-accent">${child.country}</span>
+                            </div>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 flex items-center space-x-1">
+                                <i data-lucide="heart" class="w-3.5 h-3.5 text-rose-500"></i>
+                                <span>Interests: ${child.interests}</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-5 pt-0">
+                        <button onclick="openChildModal(${child.id})" class="w-full py-2.5 bg-compassion-blue hover:bg-compassion-darkBlue text-white text-xs font-bold rounded-xl transition-all">
+                            View Profile & Sponsor
+                        </button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+            lucide.createIcons();
+        }
+
+        // Filter Children Logic
+        function filterChildren() {
+            const region = document.getElementById('filter-region').value;
+            const ageGroup = document.getElementById('filter-age').value;
+
+            let filtered = childrenData.filter(c => {
+                const matchesRegion = region === 'all' || c.region === region;
+                let matchesAge = true;
+                if (ageGroup === 'younger') matchesAge = c.age < 8;
+                if (ageGroup === 'older') matchesAge = c.age >= 8;
+                return matchesRegion && matchesAge;
+            });
+
+            renderChildren(filtered);
+        }
+
+        // Modal Controls
+        function openChildModal(childId) {
+            const child = childrenData.find(c => c.id === childId);
+            if (!child) return;
+
+            const modalContent = document.getElementById('modal-content');
+            modalContent.innerHTML = `
+                <div class="flex items-center space-x-4">
+                    <img src="${child.image}" alt="${child.name}" class="w-20 h-20 rounded-2xl object-cover">
+                    <div>
+                        <h3 class="text-2xl font-bold text-slate-900 dark:text-white">${child.name}</h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">${child.age} years old • ${child.country} (${child.region})</p>
+                        <span class="inline-block mt-1 text-[10px] bg-amber-500/10 text-amber-600 font-bold px-2 py-0.5 rounded">Waiting ${child.daysWaiting} days for a sponsor</span>
+                    </div>
+                </div>
+
+                <div class="space-y-3 pt-2">
+                    <h4 class="text-xs font-extrabold uppercase tracking-wider text-slate-400">Child Story</h4>
+                    <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">${child.story}</p>
+                </div>
+
+                <div class="bg-slate-100 dark:bg-slate-800/60 p-4 rounded-2xl space-y-2 text-xs">
+                    <div class="flex justify-between">
+                        <span class="text-slate-500">Monthly Support:</span>
+                        <span class="font-bold text-slate-900 dark:text-white">$43 / month</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-slate-500">Impact:</span>
+                        <span class="font-bold text-emerald-600">Health, Nutrition, Schooling, Hope</span>
+                    </div>
+                </div>
+
+                <button onclick="alert('Thank you for choosing to sponsor ${child.name}! You will be redirected to the secure portal.')" class="w-full py-3 bg-compassion-gold hover:bg-amber-500 text-slate-950 font-extrabold text-sm rounded-xl transition-all shadow-md">
+                    Sponsor ${child.name} Now
+                </button>
+            `;
+            document.getElementById('child-modal').classList.remove('hidden');
+        }
+
+        function closeChildModal() {
+            document.getElementById('child-modal').classList.add('hidden');
+        }
+
+        // Calculator Logic
+        function updateCalculator(val) {
+            document.getElementById('slider-amount-display').textContent = `$${val} / mo`;
+            
+            const annual = val * 12;
+            const meals = Math.round(annual * 1.0);
+            const checkups = Math.min(12, Math.max(2, Math.round(val / 4)));
+
+            document.getElementById('calc-meals').textContent = meals;
+            document.getElementById('calc-checkups').textContent = checkups;
+        }
+
+        // Quiz Logic
+        function renderQuizQuestion() {
+            const container = document.getElementById('quiz-container');
+            if (currentQuizIndex >= quizQuestions.length) {
+                container.innerHTML = `
+                    <div class="text-center py-8 space-y-4">
+                        <div class="w-16 h-16 bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 rounded-full flex items-center justify-center mx-auto text-2xl font-bold">
+                            <i data-lucide="award" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900 dark:text-white">Quiz Completed!</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">You scored <span class="font-bold text-emerald-600">${quizScore} out of ${quizQuestions.length}</span>.</p>
+                        <button onclick="resetQuiz()" class="px-6 py-2.5 bg-compassion-blue text-white rounded-xl text-xs font-bold hover:bg-compassion-darkBlue">Retake Quiz</button>
+                    </div>
+                `;
+                lucide.createIcons();
+                return;
+            }
+
+            const q = quizQuestions[currentQuizIndex];
+            let optionsHTML = '';
+            q.options.forEach((opt, idx) => {
+                optionsHTML += `
+                    <button onclick="checkQuizAnswer(${idx})" class="w-full text-left p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:border-compassion-blue transition-all text-xs sm:text-sm font-medium flex items-center justify-between">
+                        <span>${opt}</span>
+                        <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+                    </button>
+                `;
+            });
+
+            container.innerHTML = `
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between text-xs text-slate-400 font-bold uppercase tracking-wider">
+                        <span>Question ${currentQuizIndex + 1} of ${quizQuestions.length}</span>
+                        <span>Score: ${quizScore}</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white">${q.question}</h3>
+                    <div class="space-y-2 pt-2">
+                        ${optionsHTML}
+                    </div>
+                </div>
+            `;
+            lucide.createIcons();
+        }
+
+        function checkQuizAnswer(selectedIdx) {
+            const q = quizQuestions[currentQuizIndex];
+            const isCorrect = selectedIdx === q.correct;
+            if (isCorrect) quizScore++;
+
+            const container = document.getElementById('quiz-container');
+            container.innerHTML = `
+                <div class="space-y-4">
+                    <div class="p-4 rounded-2xl ${isCorrect ? 'bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-500 text-emerald-900 dark:text-emerald-200' : 'bg-rose-50 dark:bg-rose-950/40 border border-rose-500 text-rose-900 dark:text-rose-200'}">
+                        <h4 class="font-bold text-base flex items-center space-x-2">
+                            <i data-lucide="${isCorrect ? 'check-circle-2' : 'x-circle'}" class="w-5 h-5"></i>
+                            <span>${isCorrect ? 'Correct Answer!' : 'Incorrect'}</span>
+                        </h4>
+                        <p class="text-xs mt-2 leading-relaxed">${q.explanation}</p>
+                    </div>
+                    <button onclick="nextQuizQuestion()" class="w-full py-3 bg-compassion-blue hover:bg-compassion-darkBlue text-white rounded-xl text-xs font-bold transition-all">
+                        Next Question
+                    </button>
+                </div>
+            `;
+            lucide.createIcons();
+        }
+
+        function nextQuizQuestion() {
+            currentQuizIndex++;
+            renderQuizQuestion();
+        }
+
+        function resetQuiz() {
+            currentQuizIndex = 0;
+            quizScore = 0;
+            renderQuizQuestion();
+        }
+    </script>
+</body>
+</html>
